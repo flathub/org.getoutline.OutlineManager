@@ -1,9 +1,9 @@
 app-id: org.getoutline.OutlineManager
 runtime: org.freedesktop.Platform
-runtime-version: "22.08"
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: "22.08"
+base-version: '22.08'
 command: outline-manager
 finish-args:
   - --device=dri
@@ -18,7 +18,8 @@ modules:
       - chmod +x Outline-Manager.AppImage
       - ./Outline-Manager.AppImage --appimage-extract
 
-      - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'outline-manager %u' squashfs-root/outline-manager.desktop
+      - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'outline-manager
+        %u' squashfs-root/outline-manager.desktop
       - install -Dm644 squashfs-root/outline-manager.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
 
       - install -Dm755 outline-manager.sh ${FLATPAK_DEST}/bin/outline-manager
@@ -45,7 +46,7 @@ modules:
       - type: file
         only-arches: [x86_64]
         url: https://s3.amazonaws.com/outline-releases/manager/linux/stable/Outline-Manager.AppImage
-        sha512: 9d9bbc10041f9f223c985db280902067d74d97cfc0fa15e0449beba2c814abe50bba3ce5c9b8dae92ab3aae4a0d70dcf0a3cdf9ed19a25a2250be1c4a9111ef0
+        sha512: eece9536e74fa1b58680d641062cdf54665b7a68b50dc360de541186ef33fd1dce4d4c197463a3e1b699835e394249d8b144ae3bbf702a80df2296c7824b5896
         dest_filename: Outline-Manager.AppImage
         x-checker-data:
           type: rotating-url
