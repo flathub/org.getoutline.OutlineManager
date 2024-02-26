@@ -46,7 +46,7 @@ modules:
       - type: file
         only-arches: [x86_64]
         url: https://s3.amazonaws.com/outline-releases/manager/linux/stable/Outline-Manager.AppImage
-        sha512: 92bd553b1284ce8ea0515569dbada261bce4232bfe7fc68899bf7a6d45751efa662753747b97bf9f75d60047d54696ca27927e1863fbc44378a7e15b989e6621
+        sha512: 0fff9e3957338c58ea0f5f3fef3744c337ffb8f88a61b9c3d50b6c963e47e37dde26a63f0247f82a1ec9582bd20dae690a3d17cc7a0cc5c268bafaad4ba3eeee
         dest_filename: Outline-Manager.AppImage
         x-checker-data:
           type: rotating-url
