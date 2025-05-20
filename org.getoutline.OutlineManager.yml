@@ -19,8 +19,8 @@ modules:
       - ./Outline-Manager.AppImage --appimage-extract
 
       - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'outline-manager
-        %u' squashfs-root/outline-manager.desktop
-      - install -Dm644 squashfs-root/outline-manager.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+        %u' squashfs-root/@outlineserver_manager.desktop
+      - install -Dm644 squashfs-root/@outlineserver_manager.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
 
       - install -Dm755 outline-manager.sh ${FLATPAK_DEST}/bin/outline-manager
       - install -Dm644 org.getoutline.OutlineManager.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
@@ -28,7 +28,7 @@ modules:
       - |
         for IMG_SIZE in 16 24 32 48 64 128 256 512; do
             IMG_NAME=${IMG_SIZE}x${IMG_SIZE}
-            install -Dm644 squashfs-root/usr/share/icons/hicolor/${IMG_NAME}/apps/outline-manager.png ${FLATPAK_DEST}/share/icons/hicolor/${IMG_NAME}/apps/${FLATPAK_ID}.png
+            install -Dm644 squashfs-root/usr/share/icons/hicolor/${IMG_NAME}/apps/@outlineserver_manager.png ${FLATPAK_DEST}/share/icons/hicolor/${IMG_NAME}/apps/${FLATPAK_ID}.png
         done
 
       - mv squashfs-root ${FLATPAK_DEST}/outline-manager
