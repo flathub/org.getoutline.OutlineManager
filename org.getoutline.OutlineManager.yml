@@ -1,9 +1,9 @@
 app-id: org.getoutline.OutlineManager
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '23.08'
+base-version: '24.08'
 command: outline-manager
 finish-args:
   - --device=dri
@@ -19,8 +19,8 @@ modules:
       - ./Outline-Manager.AppImage --appimage-extract
 
       - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'outline-manager
-        %u' squashfs-root/outline-manager.desktop
-      - install -Dm644 squashfs-root/outline-manager.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+        %u' squashfs-root/@outlineserver_manager.desktop
+      - install -Dm644 squashfs-root/@outlineserver_manager.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
 
       - install -Dm755 outline-manager.sh ${FLATPAK_DEST}/bin/outline-manager
       - install -Dm644 org.getoutline.OutlineManager.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
@@ -28,7 +28,7 @@ modules:
       - |
         for IMG_SIZE in 16 24 32 48 64 128 256 512; do
             IMG_NAME=${IMG_SIZE}x${IMG_SIZE}
-            install -Dm644 squashfs-root/usr/share/icons/hicolor/${IMG_NAME}/apps/outline-manager.png ${FLATPAK_DEST}/share/icons/hicolor/${IMG_NAME}/apps/${FLATPAK_ID}.png
+            install -Dm644 squashfs-root/usr/share/icons/hicolor/${IMG_NAME}/apps/@outlineserver_manager.png ${FLATPAK_DEST}/share/icons/hicolor/${IMG_NAME}/apps/${FLATPAK_ID}.png
         done
 
       - mv squashfs-root ${FLATPAK_DEST}/outline-manager
@@ -46,7 +46,7 @@ modules:
       - type: file
         only-arches: [x86_64]
         url: https://s3.amazonaws.com/outline-releases/manager/linux/stable/Outline-Manager.AppImage
-        sha512: 0fff9e3957338c58ea0f5f3fef3744c337ffb8f88a61b9c3d50b6c963e47e37dde26a63f0247f82a1ec9582bd20dae690a3d17cc7a0cc5c268bafaad4ba3eeee
+        sha512: fe4dd31eea984cb28f2d492e2fb6230100e7fbd224b8a90238cfd392a7b263b54e9a0962a712b488c76dcaee84353841103f6b3e1597763a8060403af6a7b85f
         dest_filename: Outline-Manager.AppImage
         x-checker-data:
           type: rotating-url
